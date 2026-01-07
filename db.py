@@ -1,4 +1,4 @@
-from __future__ import annotations
+
 
 from typing import Any, Optional
 
@@ -47,7 +47,7 @@ def init_db(
     )
 
 
-def get_db() -> MySQLdb.connections.Connection:
+def get_db() -> MySQLdb.Connection:
     """Get (or create) the per-request MySQL connection."""
     if "db" not in g:
         settings = getattr(g, "_mysql_settings", None)
@@ -66,7 +66,7 @@ def get_db() -> MySQLdb.connections.Connection:
     return g.db
 
 
-def get_cursor() -> MySQLdb.cursors.Cursor:
+def get_cursor():
     """Convenience: dict cursor for the current request."""
     return get_db().cursor(cursorclass=MySQLdb.cursors.DictCursor)
 
